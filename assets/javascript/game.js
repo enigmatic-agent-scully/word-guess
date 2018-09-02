@@ -10,6 +10,7 @@ var gameStarted = false;
 var hasFinished = false;
 var maxTries = 14;
 var answerArray = currentWordIndex.split("");
+var blankArray = []
 
 console.log(currentWordIndex);
 console.log(currentWordIndex.length);
@@ -21,6 +22,7 @@ window.addEventListener("DOMContentLoaded", function loadGame () {
         var textNode = document.createTextNode("_ ");
         newSpan.appendChild(textNode);
         document.getElementById("currentWord").appendChild(newSpan);
+        newSpan.setAttribute("id", answerArray[i]);
     };
     var winsSpan = document.createElement("span");
     var winsText = document.createTextNode(wins);
@@ -32,11 +34,18 @@ window.addEventListener("DOMContentLoaded", function loadGame () {
     document.getElementById("guessesRemaining").appendChild(guessCountSpan);
 });
 
-//document.addEventListener("keypress", function uponGuess() {
-  //var keyPress = String.fromCharCode(event.keyCode || event.code).toLowerCase();
-  //var guessedLetters = [];
-  //keyPress.push(guessedLetters);
+
+
+document.addEventListener("keypress", function uponGuess() {
+    var currentGuess = event.key;
+    alert("You pressed " + currentGuess + "!");
+    for (i = 0; i < answerArray.length; i++) {
+        if (currentGuess = answerArray[i]) {
+            document.getElementById("span", answerArray[i]).innerHTML(currentGuess);
+        }
+    }
+} );
 
 
 
-//})
+
