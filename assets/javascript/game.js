@@ -36,15 +36,27 @@ window.addEventListener("DOMContentLoaded", function loadGame () {
 
 
 
-document.addEventListener("keypress", function uponGuess() {
-    var currentGuess = event.key;
-    alert("You pressed " + currentGuess + "!");
+window.onkeypress = function uponGuess() {
+    gameStarted = true;
+    let currentGuess = event.key; {
     for (i = 0; i < answerArray.length; i++) {
-        if (currentGuess = answerArray[i]) {
-            document.getElementById("span", answerArray[i]).innerHTML(currentGuess);
+        if (currentGuess === answerArray[i]) {
+        document.getElementById("span", currentGuess).innerText(currentGuess);
+            maxTries--;
+            
+        }
+        else if (event.key !== answerArray[i]) {
+            blankArray.push(currentGuess);
+            maxTries--;
+            var guessedLettersSpan = document.createElement("span");
+            var guessedLettersText = document.createTextNode(blankArray);
+            guessedLettersSpan.appendChild(guessedLettersText);
+            document.getElementById("guessedLetters").appendChild(guessedLettersSpan);
+            break;
         }
     }
-} );
+    }
+};
 
 
 
