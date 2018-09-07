@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function loadGame () {
 
 window.onkeypress = function uponGuess() {
     gameStarted = true;
-    let userInput = event.key; {
+    let userInput = event.key; 
     for (i = 0; i < answerArray.length; i++) {
         if (userInput === answerArray[i]) {
         document.getElementById("span", userInput).innerText(userInput);
