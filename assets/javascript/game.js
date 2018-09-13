@@ -23,9 +23,8 @@ window.addEventListener("DOMContentLoaded", function loadGame () {
     console.log(spacesArray);
     for (var i = 0; i < currentWord.length; i++) {
         spacesArray.push("_ ");
-        document.getElementById("currentWord").innerHTML("<span>_ </span>");
     };
-
+    document.getElementById("currentWord").innerHTML = "<span>" + spacesArray + "</span>";
 });
 
 
@@ -49,8 +48,7 @@ window.onkeypress = function uponGuess() {
             break;
         }
     }
-    }
-};
+    };
 
 
 
