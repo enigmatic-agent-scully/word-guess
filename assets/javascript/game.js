@@ -31,8 +31,6 @@ window.onkeypress = function uponGuess(event) {
     let userInput = event.key;
     var index = answerArray.indexOf(userInput);
     console.log(userInput);
-
-    //for (i = 0; i < answerArray.length; i++) {
     if (index != -1) {
         console.log(index);
         spacesArray.splice(index, 1, userInput);
@@ -50,7 +48,7 @@ window.onkeypress = function uponGuess(event) {
     else {
         console.log("Try again");
         incorrectArray.push(userInput);
-        lettersGuessed.innerHTML = `<span>Letters Guessed: ${incorrectArray.join(", ")}</span>`
+        lettersGuessed.innerHTML = `<span>letters guessed: ${incorrectArray.join(", ")}</span>`
     }
 }
 
