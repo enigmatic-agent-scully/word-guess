@@ -10,7 +10,8 @@ var wins = 0;
 var gameStarted = false;
 var hasFinished = false;
 var misses = 0;
-
+var spacesArray = [];
+var displayWord = document.getElementById("currentWord");
 
 
 
@@ -19,36 +20,50 @@ console.log(currentWord.length);
 console.log(answerArray);
 
 window.addEventListener("DOMContentLoaded", function loadGame () {
-    var spacesArray = answerArray.splice(0, 0, "_ ");
     console.log(spacesArray);
     for (var i = 0; i < currentWord.length; i++) {
         spacesArray.push("_ ");
+
     };
-    document.getElementById("currentWord").innerHTML = "<span>" + spacesArray + "</span>";
+    displayWord.innerHTML = `<span>${spacesArray.join("")}<span>`;
 });
 
 
 
-window.onkeypress = function uponGuess() {
+window.onkeypress = function uponGuess(event) {
     gameStarted = true;
     let userInput = event.key; 
-    for (i = 0; i < answerArray.length; i++) {
-        if (userInput === answerArray[i]) {
-        document.getElementById("span", userInput).innerText(userInput);
-            misses--;
-            
+    var findIndex = answerArray.indexOf(userInput);
+    console.log(userInput);
+    //for (i = 0; i < answerArray.length; i++) {
+        if (findIndex != -1) {
+            var regExp = new RegExp("/" + findIndex + "/", "g");
+            //console.log(regExp)
+            var x = spacesArray.join('').replace(spacesArray[findIndex],  userInput);
+            console.log(findIndex);
+            console.log(spacesArray[findIndex]);
+            console.log(x);
+
+            // spacesArray.join("").replace(spacesArray[findIndex], userInput);
+            // //spacesArray.splice((answerArray.indexOf(userInput)), 1, userInput);
+            // //spacesArray.replace(/`answerArray.indexOf(userInput)`/g)
+            // displayWord.innerHTML = `<span>${spacesArray.join("")}<span>`;
         }
-        else if (event.key !== answerArray[i]) {
-            spacesArray.push(userInput);
-            misses--;
-            var guessedLettersSpan = document.createElement("span");
-            var guessedLettersText = document.createTextNode(spacesArray);
-            guessedLettersSpan.appendChild(guessedLettersText);
-            document.getElementById("guessedLetters").appendChild(guessedLettersSpan);
-            break;
+        else {
+            console.log("Try again");
         }
-    }
-    };
+        //if (event.key !== answerArray[i]) {
+
+            //spacesArray.push(userInput);
+           // misses--;
+           // var guessedLettersSpan = document.createElement("span");
+           // var guessedLettersText = document.createTextNode(spacesArray);
+          //  guessedLettersSpan.appendChild(guessedLettersText);
+           // document.getElementById("guessedLetters").appendChild(guessedLettersSpan);
+           // break;
+        }
+    
+    //};
 
 
 
